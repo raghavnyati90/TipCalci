@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         billTextField.becomeFirstResponder()
+        
     }
     
     func closeApp(){
@@ -47,7 +48,6 @@ class ViewController: UIViewController {
         let defaultIndex = defaults.integer(forKey: "index")
         tipControl.selectedSegmentIndex = defaultIndex
         billTextField.text = defaults.string(forKey: "billAmount")
-        
         switch(defaults.integer(forKey: "color")){
         case 0:
             self.view.backgroundColor = UIColor.yellow
@@ -79,8 +79,12 @@ class ViewController: UIViewController {
         
         let bill = Double(billTextField.text!) ?? 0
         let total = bill + tipPercentages[tipControl.selectedSegmentIndex] * bill
-        tipLabel.text = String(format: "$%.2f", tipPercentages[tipControl.selectedSegmentIndex] * bill)
-        totalLabel.text = String(format: "$%.2f", total)
+        
+        let locale = Locale.current
+        let currencyCode = locale.currencyCode
+        let currencySymbol = locale.currencySymbol
+        tipLabel.text =  "\(currencySymbol!)" + String(format: "%.2f", tipPercentages[tipControl.selectedSegmentIndex] * bill) + " \(currencyCode!)"
+        totalLabel.text = "\(currencySymbol!)"  + "" + String(format: "%.2f", total) + " \(currencyCode!)"
     }
 
     @IBAction func editingChanged(_ sender: Any) {
