@@ -22,10 +22,31 @@ class ViewController: UIViewController {
         billTextField.becomeFirstResponder()
     }
     
+    func closeApp(){
+        let defaults = UserDefaults.standard
+        defaults.set(NSDate(), forKey: "closingTime")
+        defaults.set(billTextField.text, forKey: "billAmount")
+    }
+    
+    func openApp(){
+        let defaults = UserDefaults.standard
+        let currentTime = NSDate()
+        let closingTime: NSDate = defaults.object(forKey: "closingTime") as! NSDate
+        let currentTimeInterval = currentTime.timeIntervalSince1970
+        let closingTimeInterval = closingTime.timeIntervalSince1970
+        
+        if((currentTimeInterval - closingTimeInterval) > 600){
+            billTextField.text = ""
+        }else{
+            billTextField.text = defaults.string(forKey: "billAmount")
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         let defaults = UserDefaults.standard
         let defaultIndex = defaults.integer(forKey: "index")
         tipControl.selectedSegmentIndex = defaultIndex
+        billTextField.text = defaults.string(forKey: "billAmount")
         
         switch(defaults.integer(forKey: "color")){
         case 0:
@@ -57,7 +78,6 @@ class ViewController: UIViewController {
         let tipPercentages = [0.18, 0.20, 0.25]
         
         let bill = Double(billTextField.text!) ?? 0
-        //_ip = bill * 0.2
         let total = bill + tipPercentages[tipControl.selectedSegmentIndex] * bill
         tipLabel.text = String(format: "$%.2f", tipPercentages[tipControl.selectedSegmentIndex] * bill)
         totalLabel.text = String(format: "$%.2f", total)
