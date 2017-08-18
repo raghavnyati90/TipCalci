@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        billTextField.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
