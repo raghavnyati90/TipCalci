@@ -67,7 +67,6 @@ class SettingsViewController: UIViewController {
         let defaults = UserDefaults.standard
         defaults.set(segControl.selectedSegmentIndex, forKey: "index")
         defaults.synchronize()
-        //self.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,15 +77,5 @@ class SettingsViewController: UIViewController {
     @IBAction func backClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

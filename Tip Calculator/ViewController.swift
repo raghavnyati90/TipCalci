@@ -9,8 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     
+    @IBOutlet weak var dividerView: UIView!
+    @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var view1: UIView!
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
@@ -20,6 +22,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         billTextField.becomeFirstResponder()
+        
+        self.view1.alpha = 0
+        self.view2.alpha = 1
+        self.dividerView.alpha = 0
+        self.dividerView.backgroundColor = UIColor.brown
+        UIView.animate(withDuration: 0.4, animations: {
+            self.view1.alpha = 1
+            self.view2.alpha = 1
+            self.dividerView.alpha = 1
+        })
         
     }
     
@@ -51,16 +63,22 @@ class ViewController: UIViewController {
         switch(defaults.integer(forKey: "color")){
         case 0:
             self.view.backgroundColor = UIColor.yellow
+            self.view1.backgroundColor = UIColor.yellow
+            self.view2.backgroundColor = UIColor.yellow
             self.tipControl.backgroundColor = UIColor.white
             self.tipControl.tintColor = UIColor.brown
             break
         case 1:
             self.view.backgroundColor = UIColor.cyan
+            self.view1.backgroundColor = UIColor.cyan
+            self.view2.backgroundColor = UIColor.cyan
             self.tipControl.backgroundColor = UIColor.white
             self.tipControl.tintColor = UIColor.brown
             break
         case 2:
             self.view.backgroundColor = UIColor.gray
+            self.view1.backgroundColor = UIColor.gray
+            self.view2.backgroundColor = UIColor.gray
             self.tipControl.backgroundColor = UIColor.white
             self.tipControl.tintColor = UIColor.brown
             break
@@ -75,8 +93,12 @@ class ViewController: UIViewController {
     }
     
     func calculateTip(){
-        let tipPercentages = [0.18, 0.20, 0.25]
+        self.dividerView.alpha = 0
+        UIView.animate(withDuration: 0.4, animations: {
+            self.dividerView.alpha = 1
+        })
         
+        let tipPercentages = [0.18, 0.20, 0.25]
         let bill = Double(billTextField.text!) ?? 0
         let total = bill + tipPercentages[tipControl.selectedSegmentIndex] * bill
         
