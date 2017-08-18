@@ -24,6 +24,26 @@ class ViewController: UIViewController {
         let defaults = UserDefaults.standard
         let defaultIndex = defaults.integer(forKey: "index")
         tipControl.selectedSegmentIndex = defaultIndex
+        
+        switch(defaults.integer(forKey: "color")){
+        case 0:
+            self.view.backgroundColor = UIColor.yellow
+            self.tipControl.backgroundColor = UIColor.white
+            self.tipControl.tintColor = UIColor.brown
+            break
+        case 1:
+            self.view.backgroundColor = UIColor.cyan
+            self.tipControl.backgroundColor = UIColor.white
+            self.tipControl.tintColor = UIColor.brown
+            break
+        case 2:
+            self.view.backgroundColor = UIColor.gray
+            self.tipControl.backgroundColor = UIColor.white
+            self.tipControl.tintColor = UIColor.brown
+            break
+        default:
+            break
+        }
         calculateTip()
     }
     

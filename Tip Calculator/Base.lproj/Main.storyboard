@@ -137,6 +137,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose default theme:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="07m-Xq-30g">
+                                <rect key="frame" x="16" y="262" width="335" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="GnN-ev-qfL">
+                                <rect key="frame" x="16" y="309" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Yellow"/>
+                                    <segment title="Cyan"/>
+                                    <segment title="Gray"/>
+                                </segments>
+                                <connections>
+                                    <action selector="colorSegChanged:" destination="Ooq-X5-GfC" eventType="valueChanged" id="dOE-tp-iJy"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.82215711810000003" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -144,12 +163,13 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="qOo-7c-HvQ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="colorSeg" destination="GnN-ev-qfL" id="hW9-ej-oIG"/>
                         <outlet property="segControl" destination="sMQ-zA-jAQ" id="7l1-NN-Cdz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVT-43-JDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="48"/>
+            <point key="canvasLocation" x="1157.5" y="47.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nal-mI-JY4">
