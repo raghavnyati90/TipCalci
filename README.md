@@ -7,7 +7,7 @@ TipCalci is a tip calculator with settings screen to remember default tip amount
 
 Submitted by: **Raghav Nyati**
 
-Time spent: **2** hours spent in total
+Time spent: **5** hours spent in total
 
 ## User Stories
 
